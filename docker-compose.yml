@@ -12,4 +12,7 @@ services:
       POSTGRES_DB: nest-clean
       PGDATA: /data/postgres
     volumes:
-      - ./data/pg:/data/postgres
+      - pg_data:/data/postgres
+
+volumes:
+  pg_data:
