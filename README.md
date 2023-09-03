@@ -12,6 +12,8 @@ This repository is a sample project for the Clean Architecture with NestJS.
 - PostgreSQL
 - Docker
 - Vitest
+- FakerJS
+- DayJS
 
 ## License
 
