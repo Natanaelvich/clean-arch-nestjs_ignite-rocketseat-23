@@ -9,9 +9,10 @@ import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-case
 import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/register-student'
 import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student'
 import { CryptographyModule } from '../cryptography/cryptography.module'
+import { DatabaseModule } from '../database/database.module'
 
 @Module({
-  imports: [CryptographyModule],
+  imports: [DatabaseModule, CryptographyModule],
   controllers: [
     CreateAccountController,
     AuthenticateController,
