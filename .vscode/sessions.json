@@ -1,0 +1,29 @@
+{
+  "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v7/terminal-keeper.json",
+  "theme": "tribe",
+  "active": "default",
+  "activateOnStartup": true,
+  "keepExistingTerminals": false,
+  "sessions": {
+    "default": [
+      [
+        {
+          "name": "docker",
+          "commands": [
+            "docker-compose up"
+          ],
+          "order": 0,
+          "autoExecuteCommands": true
+        },
+        {
+          "name": "api",
+          "commands": [
+            "yarn start:dev"
+          ],
+          "order": 1,
+          "autoExecuteCommands": true
+        }
+      ]
+    ]
+  }
+}
