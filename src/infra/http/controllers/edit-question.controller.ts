@@ -5,14 +5,12 @@ import {
   HttpCode,
   Param,
   Put,
-  UseGuards,
 } from '@nestjs/common'
 import { CurrentUser } from '@/infra/auth/current-user-decorator'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import { z } from 'zod'
 import { EditQuestionUseCase } from '@/domain/forum/application/use-cases/edit-question'
-import { JwtAuthGuard } from '@/infra/auth/jwt-auth.guard'
 
 const editQuestionBodySchema = z.object({
   title: z.string(),
@@ -29,7 +27,6 @@ export class EditQuestionController {
 
   @Put()
   @HttpCode(204)
-  @UseGuards(JwtAuthGuard)
   async handle(
     @Body(bodyValidationPipe) body: EditQuestionBodySchema,
     @CurrentUser() user: UserPayload,
