@@ -6,7 +6,7 @@ POST {{baseUrl}}/accounts
 Content-Type: application/json
 
 {
-  "name": "Natanael Lima",
+  "name": "Natanael",
   "email": "natanael@test.com",
   "password": "123456"
 }
@@ -22,3 +22,21 @@ Content-Type: application/json
   "password": "123456"
 }
 
+###
+
+# @name create_question
+POST {{baseUrl}}/questions
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "Nova pergunta 2",
+  "content": "Teste"
+}
+
+###
+
+# @name fetch_recent_questions
+GET {{baseUrl}}/questions?page=1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
