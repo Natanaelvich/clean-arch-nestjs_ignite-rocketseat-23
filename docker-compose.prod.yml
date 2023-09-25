@@ -1,0 +1,63 @@
+version: '3.8'
+services:
+  app1: &app
+    container_name: nest-clean-app1
+    build: .
+    hostname: app1
+    expose:
+      - "3333"
+    depends_on:
+      - postgres
+    deploy:
+      resources:
+        limits:
+          cpus: '0.15'
+          memory: '0.4GB'
+
+  app2:
+    <<: *app
+    container_name: nest-clean-app2
+    hostname: app2
+  
+  nginx: # Load Balancer
+    container_name: nest-clean-nginx
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app1
+      - app2
+    ports:
+      - "9999:9999"
+    ulimits:
+      nproc: 1000000
+      nofile:
+        soft: 1000000
+        hard: 1000000
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: '0.3GB'
+  
+  postgres:
+    container_name: nest-clean-pg
+    image: postgres
+    command: postgres -c 'max_connections=450' -c 'log_error_verbosity=terse'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: nest-clean
+      PGDATA: /data/postgres
+    ports:
+      - 5432:5432
+    deploy:
+      resources:
+        limits:
+          cpus: '0.4'
+          memory: '1.5GB'
+    volumes:
+      - pg_data:/data/postgres
+
+volumes:
+  pg_data:
