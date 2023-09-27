@@ -15,6 +15,7 @@ import { EditQuestionUseCase } from '@/domain/forum/application/use-cases/edit-q
 const editQuestionBodySchema = z.object({
   title: z.string(),
   content: z.string(),
+  attachments: z.array(z.string().uuid()).default([]),
 })
 
 const bodyValidationPipe = new ZodValidationPipe(editQuestionBodySchema)
