@@ -39,8 +39,8 @@ export class FetchQuestionCommentsController {
       throw new BadRequestException()
     }
 
-    const questionComments = result.value.comments
+    const comments = result.value.comments
 
-    return { comments: questionComments.map(CommentWithAuthorPresenter.toHTTP) }
+    return { comments: comments.map(CommentWithAuthorPresenter.toHTTP) }
   }
 }
