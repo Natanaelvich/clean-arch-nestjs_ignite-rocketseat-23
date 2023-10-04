@@ -34,6 +34,11 @@ This repository is a sample project for the Clean Architecture with NestJS.
 3. Run `yarn prisma migrate dev` to run the migrations.
 4. Run `yarn start:dev` to start the application.
 
+### Running the tests
+
+1. Run `test:e2e` to run the end-to-end tests.
+2. Run `test` to run the unit tests.
+
 ## License
 
 This repository is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
