@@ -39,6 +39,10 @@ This repository is a sample project for the Clean Architecture with NestJS.
 1. Run `test:e2e` to run the end-to-end tests.
 2. Run `test` to run the unit tests.
 
+### Providers
+
+- [Cloudflare R2](https://developers.cloudflare.com/r2/)
+
 ## License
 
 This repository is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
